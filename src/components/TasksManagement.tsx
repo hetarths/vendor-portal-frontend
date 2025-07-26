@@ -178,80 +178,81 @@ function TasksManagement() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Task Management</h1>
-          <p className="text-gray-600 mt-1">Manage tasks and track efforts</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Task Management</h1>
+          <p className="text-gray-600 mt-1 text-sm sm:text-base">Manage tasks and track efforts</p>
         </div>
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           <button
             onClick={exportTasks}
-            className="bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors flex items-center space-x-2"
+            className="bg-blue-900 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors flex items-center space-x-2 text-sm sm:text-base"
           >
             <Download className="w-4 h-4" />
-            <span>Export</span>
+            <span className="hidden sm:inline">Export</span>
           </button>
           <button
             onClick={openAddModal}
-            className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors flex items-center space-x-2"
+            className="bg-black text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors flex items-center space-x-2 text-sm sm:text-base"
           >
             <Plus className="w-4 h-4" />
-            <span>Add Task</span>
+            <span className="hidden sm:inline">Add Task</span>
+            <span className="sm:hidden">Add</span>
           </button>
         </div>
       </div>
 
       {/* Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
+        <div className="bg-white p-3 sm:p-4 rounded-lg shadow-md border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total Tasks</p>
-              <p className="text-xl font-bold text-gray-900">{filteredTasks.length}</p>
+              <p className="text-xs sm:text-sm text-gray-600">Total Tasks</p>
+              <p className="text-lg sm:text-xl font-bold text-gray-900">{filteredTasks.length}</p>
             </div>
-            <FileText className="w-8 h-8 text-blue-900" />
+            <FileText className="w-6 h-6 sm:w-8 sm:h-8 text-blue-900" />
           </div>
         </div>
-        <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+        <div className="bg-white p-3 sm:p-4 rounded-lg shadow-md border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total Efforts</p>
-              <p className="text-xl font-bold text-gray-900">{getTotalEfforts()}h</p>
+              <p className="text-xs sm:text-sm text-gray-600">Total Efforts</p>
+              <p className="text-lg sm:text-xl font-bold text-gray-900">{getTotalEfforts()}h</p>
             </div>
-            <Clock className="w-8 h-8 text-blue-900" />
+            <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-blue-900" />
           </div>
         </div>
-        <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+        <div className="bg-white p-3 sm:p-4 rounded-lg shadow-md border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Completed</p>
-              <p className="text-xl font-bold text-gray-900">
+              <p className="text-xs sm:text-sm text-gray-600">Completed</p>
+              <p className="text-lg sm:text-xl font-bold text-gray-900">
                 {filteredTasks.filter(t => t.status === 'completed').length}
               </p>
             </div>
-            <div className="w-8 h-8 bg-blue-900 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">✓</span>
+            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-900 rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-sm sm:text-base">✓</span>
             </div>
           </div>
         </div>
-        <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+        <div className="bg-white p-3 sm:p-4 rounded-lg shadow-md border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">In Progress</p>
-              <p className="text-xl font-bold text-gray-900">
+              <p className="text-xs sm:text-sm text-gray-600">In Progress</p>
+              <p className="text-lg sm:text-xl font-bold text-gray-900">
                 {filteredTasks.filter(t => t.status === 'in-progress').length}
               </p>
             </div>
-            <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">→</span>
+            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-black rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-sm sm:text-base">→</span>
             </div>
           </div>
         </div>
       </div>
 
       <div className="bg-white rounded-lg shadow-md border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
@@ -263,7 +264,7 @@ function TasksManagement() {
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-blue-900"
               />
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
@@ -288,51 +289,52 @@ function TasksManagement() {
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto -mx-4 sm:mx-0">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Task</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assignee</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Efforts</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Priority</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Task</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">Assignee</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">Efforts</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Priority</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden xl:table-cell">Created</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {filteredTasks.map((task) => (
                 <tr key={task.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
+                  <td className="px-4 sm:px-6 py-4">
                     <div>
                       <div className="text-sm font-medium text-gray-900">{task.name}</div>
-                      <div className="text-sm text-gray-500 mt-1">{task.description}</div>
+                      <div className="text-sm text-gray-500 mt-1 md:hidden">{task.assignee}</div>
+                      <div className="text-sm text-gray-500 mt-1 line-clamp-2">{task.description}</div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap hidden md:table-cell">
                     <div className="text-sm text-gray-900">{task.assignee}</div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap hidden lg:table-cell">
                     <div className="flex items-center space-x-2">
                       <Clock className="w-4 h-4 text-gray-400" />
                       <span className="text-sm text-gray-900">{task.efforts}h</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getPriorityColor(task.priority)}`}>
                       {priorityOptions.find(option => option.value === task.priority)?.label}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(task.status)}`}>
                       {statusOptions.find(option => option.value === task.status)?.label}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden xl:table-cell">
                     {new Date(task.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => openEditModal(task)}

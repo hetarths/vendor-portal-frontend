@@ -29,7 +29,7 @@ const menuItems = [
 
 function Sidebar({ activeModule, setActiveModule, currentUser, onSignOut }: SidebarProps) {
   return (
-    <div className="w-72 bg-white text-gray-900 flex flex-col shadow-2xl border-r border-gray-200">
+    <div className="hidden lg:flex w-72 bg-white text-gray-900 flex-col shadow-2xl border-r border-gray-200">
       {/* Header */}
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center space-x-3">

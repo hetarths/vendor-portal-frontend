@@ -123,28 +123,29 @@ function RolesManagement() {
   }, {} as Record<string, typeof availablePermissions>);
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Roles & Rights Management</h1>
-          <p className="text-gray-600 mt-1">Manage user roles and permissions</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Roles & Rights Management</h1>
+          <p className="text-gray-600 mt-1 text-sm sm:text-base">Manage user roles and permissions</p>
         </div>
         <button
           onClick={openAddModal}
-          className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors flex items-center space-x-2"
+          className="bg-black text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors flex items-center space-x-2 text-sm sm:text-base"
         >
           <Plus className="w-4 h-4" />
-          <span>Add Role</span>
+          <span className="hidden sm:inline">Add Role</span>
+          <span className="sm:hidden">Add</span>
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
         {roles.map((role) => (
-          <div key={role.id} className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
+          <div key={role.id} className="bg-white rounded-lg shadow-md border border-gray-200 p-4 sm:p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
                 <Shield className="w-5 h-5 text-blue-900" />
-                <h3 className="text-lg font-semibold text-gray-900">{role.name}</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900">{role.name}</h3>
               </div>
               <div className="flex items-center space-x-2">
                 <button

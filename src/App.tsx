@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
+import MobileHeader from './components/MobileHeader';
+import MobileMenu from './components/MobileMenu';
 import SignIn from './components/SignIn';
 import Dashboard from './components/Dashboard';
 import UserManagement from './components/UserManagement';
@@ -19,6 +21,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [activeModule, setActiveModule] = useState('dashboard');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSignIn = (email: string, password: string) => {
     // Mock authentication
@@ -40,6 +43,11 @@ function App() {
     setIsAuthenticated(false);
     setCurrentUser(null);
     setActiveModule('dashboard');
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   const renderActiveModule = () => {
@@ -66,14 +74,29 @@ function App() {
   }
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-slate-100 to-blue-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-blue-50/30 lg:flex">
+      <MobileHeader 
+        currentUser={currentUser}
+        onMenuToggle={toggleMobileMenu}
+        onSignOut={handleSignOut}
+        isMenuOpen={isMobileMenuOpen}
+      />
+      
+      <MobileMenu
+        activeModule={activeModule}
+        setActiveModule={setActiveModule}
+        onSignOut={handleSignOut}
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
+      
       <Sidebar 
         activeModule={activeModule} 
         setActiveModule={setActiveModule}
         currentUser={currentUser}
         onSignOut={handleSignOut}
       />
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 lg:overflow-auto">
         {renderActiveModule()}
       </main>
     </div>

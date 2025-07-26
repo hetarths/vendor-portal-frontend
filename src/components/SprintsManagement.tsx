@@ -172,23 +172,24 @@ function SprintsManagement() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Sprints Management</h1>
-          <p className="text-gray-600 mt-1">Manage project sprints and track their progress</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Sprints Management</h1>
+          <p className="text-gray-600 mt-1 text-sm sm:text-base">Manage project sprints and track their progress</p>
         </div>
         <button
           onClick={openAddModal}
-          className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors flex items-center space-x-2"
+          className="bg-black text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors flex items-center space-x-2 text-sm sm:text-base"
         >
           <Plus className="w-4 h-4" />
-          <span>Add Sprint</span>
+          <span className="hidden sm:inline">Add Sprint</span>
+          <span className="sm:hidden">Add</span>
         </button>
       </div>
 
       <div className="bg-white rounded-lg shadow-md border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
@@ -213,34 +214,35 @@ function SprintsManagement() {
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto -mx-4 sm:mx-0">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sprint</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Attachments</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sprint</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">Project</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">Duration</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden xl:table-cell">Attachments</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {filteredSprints.map((sprint) => (
                 <tr key={sprint.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
+                  <td className="px-4 sm:px-6 py-4">
                     <div>
                       <div className="text-sm font-medium text-gray-900">{sprint.name}</div>
-                      <div className="text-sm text-gray-500 mt-1">{sprint.comments}</div>
+                      <div className="text-sm text-gray-500 mt-1 md:hidden">{sprint.projectName}</div>
+                      <div className="text-sm text-gray-500 mt-1 line-clamp-2">{sprint.comments}</div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap hidden md:table-cell">
                     <div className="flex items-center space-x-2">
                       <FolderOpen className="w-4 h-4 text-gray-400" />
                       <span className="text-sm text-gray-900">{sprint.projectName}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap hidden lg:table-cell">
                     <div className="flex items-center space-x-2">
                       <Calendar className="w-4 h-4 text-gray-400" />
                       <div className="text-sm text-gray-900">
@@ -248,18 +250,18 @@ function SprintsManagement() {
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(sprint.status)}`}>
                       {statusOptions.find(option => option.value === sprint.status)?.label}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap hidden xl:table-cell">
                     <div className="flex items-center space-x-2">
                       <Paperclip className="w-4 h-4 text-gray-400" />
                       <span className="text-sm text-gray-900">{sprint.attachments.length} files</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => openEditModal(sprint)}

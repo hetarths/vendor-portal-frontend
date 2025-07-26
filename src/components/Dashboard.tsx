@@ -18,26 +18,26 @@ function Dashboard() {
   ];
 
   return (
-    <div className="p-6 bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-full">
+    <div className="p-4 sm:p-6 bg-gradient-to-br from-slate-50 to-blue-50/30 min-h-full">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
+        <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
           Dashboard
         </h1>
-        <p className="text-slate-600 mt-2 text-lg">Welcome back! Here's what's happening in your system.</p>
+        <p className="text-slate-600 mt-2 text-base sm:text-lg">Welcome back! Here's what's happening in your system.</p>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
-            <div key={index} className="bg-white rounded-2xl shadow-lg p-6 border border-slate-200/50 hover:shadow-xl transition-all duration-300 hover:transform hover:scale-[1.02]">
+            <div key={index} className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 border border-slate-200/50 hover:shadow-xl transition-all duration-300 hover:transform hover:scale-[1.02]">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-semibold text-slate-600 uppercase tracking-wide">{stat.label}</p>
+                  <p className="text-xs sm:text-sm font-semibold text-slate-600 uppercase tracking-wide">{stat.label}</p>
                   <div className="flex items-baseline space-x-2 mt-2">
-                    <p className="text-3xl font-bold text-slate-900">{stat.value}</p>
-                    <span className={`text-sm font-medium px-2 py-1 rounded-full ${
+                    <p className="text-2xl sm:text-3xl font-bold text-slate-900">{stat.value}</p>
+                    <span className={`text-xs sm:text-sm font-medium px-2 py-1 rounded-full ${
                       stat.change.startsWith('+') 
                         ? 'text-green-700 bg-green-100' 
                         : 'text-red-700 bg-red-100'
@@ -46,8 +46,8 @@ function Dashboard() {
                     </span>
                   </div>
                 </div>
-                <div className={`w-14 h-14 rounded-2xl ${stat.color} flex items-center justify-center shadow-lg`}>
-                  <Icon className="w-6 h-6 text-white" />
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${stat.color} flex items-center justify-center shadow-lg`}>
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
               </div>
             </div>
@@ -55,21 +55,21 @@ function Dashboard() {
         })}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
         {/* Recent Activity */}
         <div className="bg-white rounded-2xl shadow-lg border border-slate-200/50">
-          <div className="p-6 border-b border-slate-200/50">
+          <div className="p-4 sm:p-6 border-b border-slate-200/50">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
                 <Activity className="w-4 h-4 text-white" />
               </div>
-              <h2 className="text-xl font-bold text-slate-800">Recent Activity</h2>
+              <h2 className="text-lg sm:text-xl font-bold text-slate-800">Recent Activity</h2>
             </div>
           </div>
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             <div className="space-y-4">
               {recentActivity.map((activity, index) => (
-                <div key={index} className="flex items-start space-x-4 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                <div key={index} className="flex items-start space-x-3 sm:space-x-4 p-2 sm:p-3 rounded-xl hover:bg-slate-50 transition-colors">
                   <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mt-2 shadow-sm"></div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-slate-800">{activity.action}</p>
@@ -83,15 +83,15 @@ function Dashboard() {
 
         {/* Performance Overview */}
         <div className="bg-white rounded-2xl shadow-lg border border-slate-200/50">
-          <div className="p-6 border-b border-slate-200/50">
+          <div className="p-4 sm:p-6 border-b border-slate-200/50">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-slate-600 to-slate-700 rounded-lg flex items-center justify-center">
                 <TrendingUp className="w-4 h-4 text-white" />
               </div>
-              <h2 className="text-xl font-bold text-slate-800">Performance Overview</h2>
+              <h2 className="text-lg sm:text-xl font-bold text-slate-800">Performance Overview</h2>
             </div>
           </div>
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-slate-600">Project Completion Rate</span>
